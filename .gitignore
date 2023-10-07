@@ -1,0 +1,6 @@
+.DS_Store
+*.jpg
+__pycache__/*
+*.hdr
+*.log
+__pycache__/

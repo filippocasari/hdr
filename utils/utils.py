@@ -6,13 +6,16 @@ logger = logging.getLogger('utils')
 
 logger.setLevel(logging.DEBUG)
 
+formatter = logging.Formatter('%(asctime)s %(message)s')
+
+
 if not os.path.exists('./logs'):
     os.makedirs('./logs')
 
 handler = logging.FileHandler('./logs/times.log')
 
 handler.setLevel(logging.DEBUG)
-
+handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 

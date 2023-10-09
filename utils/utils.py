@@ -19,7 +19,7 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 
-def compute_size(f):
+def compute_time_execution(f):
     """computes the time required for a function to run
 
     Args:

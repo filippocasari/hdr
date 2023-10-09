@@ -1,10 +1,10 @@
-from utils.utils import compute_size
+from utils.utils import compute_time_execution
 import sys
 import cv2
 import numpy as np
 sys.path.append('../utils')
 
-@compute_size
+@compute_time_execution
 def exposure_fusion(img_list: list) -> np.ndarray:
     """applies exposure fusion to a list of images with different exposures
 
@@ -19,7 +19,7 @@ def exposure_fusion(img_list: list) -> np.ndarray:
     return np.clip(resFusion*255, 0, 255).astype('uint8')
 
 
-@compute_size
+@compute_time_execution
 def align_images(img_list: list, **kwargs):
 
     cv2.createAlignMTB().process(img_list, img_list)
@@ -27,7 +27,7 @@ def align_images(img_list: list, **kwargs):
     return img_list
 
 
-@compute_size
+@compute_time_execution
 def calibrate_debevec(img_list: list, exposure_times: list):
     calibrateDebevec = cv2.createCalibrateDebevec()
     responseDebevec = calibrateDebevec.process(img_list, exposure_times)
@@ -35,7 +35,7 @@ def calibrate_debevec(img_list: list, exposure_times: list):
     return responseDebevec
 
 
-@compute_size
+@compute_time_execution
 def merge_debevec(img_list: list, exposure_times: list, response=None):
     mergeDebevec = cv2.createMergeDebevec()
     hdrDebevec = mergeDebevec.process(img_list, exposure_times, response)
